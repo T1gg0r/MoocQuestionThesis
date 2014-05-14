@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void startTest(View view) {
-    	Intent startTest = new Intent(this, StartTest.class);
+    	Intent startTest = new Intent(this, TestInstructions.class);
     	
     	//Platznummer
     	EditText editText = (EditText) findViewById(R.id.editText1);

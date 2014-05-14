@@ -1,9 +1,7 @@
-package de.uni_hannover.hci.quiz;
+package de.uni_hannover.hci.activity;
 
 import com.example.mooctest.R;
 
-import de.uni_hannover.hci.activity.MainActivity;
-import de.uni_hannover.hci.activity.Video;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
@@ -13,39 +11,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.RadioButton;
 
-public class Quiz2 extends ActionBarActivity {
+public class TestInstructions extends ActionBarActivity {
 
-	int message;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.quiz2);
-
-		Intent intent = getIntent();
-		message = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0 );
-	}
-
-	public void selectAnswer(View view) {
-		//RadioButton answer = (RadioButton) view;
-		Button btn_next = (Button) findViewById(R.id.Q1btn_nxt);
-		btn_next.setVisibility(0);
-		btn_next.setClickable(true);
-	}
-	
-	public void nextActivity(View view) {
-		Intent next = new Intent(this, Video.class);
-		next.putExtra(MainActivity.EXTRA_MESSAGE, message);
-		startActivity(next);
+		setContentView(R.layout.testinstructions);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.quiz, menu);
+		getMenuInflater().inflate(R.menu.start_test, menu);
 		return true;
 	}
 
@@ -61,6 +40,11 @@ public class Quiz2 extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void video1(View view) {
+		Intent startVideo = new Intent(this, Video.class);
+    	startVideo.putExtra(MainActivity.EXTRA_MESSAGE, 1);
+		startActivity(startVideo);
+	}
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
@@ -72,8 +56,8 @@ public class Quiz2 extends ActionBarActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.quiz2, container,
-					false);
+			View rootView = inflater.inflate(R.layout.testinstructions,
+					container, false);
 			return rootView;
 		}
 	}

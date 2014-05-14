@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.uni_hannover.hci.activity.StartTest"
+            android:name="de.uni_hannover.hci.activity.TestInstructions"
             android:label="@string/title_activity_start_test"
             android:screenOrientation="landscape" >
         </activity>
@@ -37,8 +37,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="YouTubeBaseActivity" />
         </activity>
+                <activity
+            android:name="de.uni_hannover.hci.activity.VideoAnswer"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="YouTubeBaseActivity" />
+        </activity>
         <activity
-            android:name="de.uni_hannover.hci.quiz.Quiz2"
+            android:name="de.uni_hannover.hci.quiz.Quiz3"
+            android:label="@string/title_activity_quiz"
+            android:screenOrientation="landscape" >
+        </activity>
+                <activity
+            android:name="de.uni_hannover.hci.quiz.Quiz4"
+            android:label="@string/title_activity_quiz"
+            android:screenOrientation="landscape" >
+        </activity>
+                <activity
+            android:name="de.uni_hannover.hci.quiz.Quiz5"
+            android:label="@string/title_activity_quiz"
+            android:screenOrientation="landscape" >
+        </activity>
+                <activity
+            android:name="de.uni_hannover.hci.quiz.Quiz6"
             android:label="@string/title_activity_quiz"
             android:screenOrientation="landscape" >
         </activity>

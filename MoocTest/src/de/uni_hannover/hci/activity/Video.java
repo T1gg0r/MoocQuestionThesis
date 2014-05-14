@@ -1,15 +1,11 @@
 package de.uni_hannover.hci.activity;
 
 import com.example.mooctest.R;
-import com.example.mooctest.R.id;
-import com.example.mooctest.R.layout;
-import com.example.mooctest.R.menu;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
 import com.google.android.youtube.player.YouTubePlayer.OnInitializedListener;
-import com.google.android.youtube.player.YouTubePlayer.PlaybackEventListener;
 import com.google.android.youtube.player.YouTubePlayer.PlayerStateChangeListener;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
@@ -39,10 +35,9 @@ public class Video extends YouTubeBaseActivity implements
 
 		Intent intent = getIntent();
 		message = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0 );
-		this.setTitle("Lektion "+(message+1));
+		this.setTitle("Lektion "+message);
 		
 		youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
-		System.out.println(youTubeView);
 		youTubeView.initialize(DeveloperKey.DEVELOPER_KEY, this);
 
 	}
@@ -68,24 +63,24 @@ public class Video extends YouTubeBaseActivity implements
 	}
 
 	public void nextActivity(View view) {
-		if(LinkStore.isQuiz(message+1)) {
+		if(LinkStore.isQuiz(message)) {
 			Class<?> nextClass = null;
 			try {
-				System.out.println("de.uni_hannover.hci.quiz.Quiz"+(message+1));
-				nextClass = Class.forName("de.uni_hannover.hci.quiz.Quiz"+(message+1));
+				System.out.println("de.uni_hannover.hci.quiz.Quiz"+message);
+				nextClass = Class.forName("de.uni_hannover.hci.quiz.Quiz"+message);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			Intent next = new Intent(this, nextClass);
-			next.putExtra(MainActivity.EXTRA_MESSAGE, message+1);
+			next.putExtra(MainActivity.EXTRA_MESSAGE, message);
 			startActivity(next);
 		} else {
 			System.out.println(message+1);
 			System.out.println(LinkStore.getVideo(message+1));
 			player.cueVideo(LinkStore.getVideo(message+1));
 			message++;
-			this.setTitle("Lektion "+(message+1));
+			this.setTitle("Lektion "+message);
 		}
 		
 	}

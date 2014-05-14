@@ -3,6 +3,6 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.uni_hannover.hci.activity.StartTest"
+    tools:context="de.uni_hannover.hci.activity.TestInstructions"
     tools:ignore="MergeRootFrame" />
 
