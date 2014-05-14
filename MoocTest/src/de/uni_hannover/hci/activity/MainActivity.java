@@ -2,6 +2,7 @@ package de.uni_hannover.hci.activity;
 
 import com.example.mooctest.R;
 
+import de.uni_hannover.hci.data.LinkStore;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -22,7 +23,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        LinkStore.init();
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
