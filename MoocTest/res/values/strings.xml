@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Mooc Test</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Print Data</string>
     <string name="greeting">Willkommen beim Mooc Test</string>
     <string name="greeting2">Gib bitte deine Platznummer in das Feld unten ein, dann kann es losgehen.</string>
     <string name="place">Platznummer</string>

@@ -2,6 +2,7 @@ package de.uni_hannover.hci.activity;
 
 import com.example.mooctest.R;
 
+import de.uni_hannover.hci.data.DataStore;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
@@ -24,8 +25,8 @@ public class TestInstructions extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.start_test, menu);
-		return true;
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
@@ -35,6 +36,7 @@ public class TestInstructions extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			DataStore.printData();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

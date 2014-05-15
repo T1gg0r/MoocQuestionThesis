@@ -2,11 +2,16 @@ package de.uni_hannover.hci.activity;
 
 import com.example.mooctest.R;
 
+import de.uni_hannover.hci.data.DataStore;
+import de.uni_hannover.hci.data.DataTypes;
+import de.uni_hannover.hci.data.FeedReaderDbHelper;
 import de.uni_hannover.hci.data.LinkStore;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,6 +29,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         LinkStore.init();
+        
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -37,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
         
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -47,6 +53,7 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+        	DataStore.printData();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -57,9 +64,11 @@ public class MainActivity extends ActionBarActivity {
     	
     	//Platznummer
     	EditText editText = (EditText) findViewById(R.id.editText1);
-    	Editable placeNumber = editText.getText();
+    	String placeNumber = editText.getText().toString();
     //	if(placeNumber.length() == 2 && isNumber(placeNumber.charAt(0)) && isNumber(placeNumber.charAt(1))) {
     		//Start des Tests
+    	DataStore.setData(DataTypes.ID, placeNumber);
+    	System.out.println(DataStore.getData(DataTypes.ID));
         startActivity(startTest);
     //	} else {
     		//TODO
@@ -83,6 +92,7 @@ public class MainActivity extends ActionBarActivity {
     	}
     	return false;
     }
+
     /**
      * A placeholder fragment containing a simple view.
      */

@@ -4,6 +4,7 @@ import com.example.mooctest.R;
 
 import de.uni_hannover.hci.activity.MainActivity;
 import de.uni_hannover.hci.activity.VideoAnswer;
+import de.uni_hannover.hci.data.DataStore;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -39,8 +40,8 @@ public abstract class QuizAbstract extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.quiz, menu);
-		return true;
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
@@ -50,6 +51,7 @@ public abstract class QuizAbstract extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			DataStore.printData();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
